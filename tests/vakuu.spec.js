@@ -1,79 +1,72 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 
-/* test('has title', async ({ page }) => {
-  await page.goto('https://polis812.github.io/vacuu/');
-  
-  //Expect a title "to contain" a substring.
-  //await expect(page).toHaveTitle(/vacuu/);
-  await page.locator('//*[@id="app"]/div[2]/div[1]/div[1]/a[2]').click();
 
-}); */
-test('Page Insurance has no 404', async ({ page }) => {
+test('№3 Page Insurance has no 404', async ({ page }) => {
 
   const response = await page.request.get('https://polis812.github.io/insurance');
   await expect(response).toBeOK();
 
 });
 
-test('Page About has no 404', async ({ page }) => {
+test('№4 Page About has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/about');
   await expect(response).toBeOK();
 
 });
 
 
-test('Page Review has no 404', async ({ page }) => {
+test('№6 Page Review has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/review');
   await expect(response).toBeOK();
 
 });
 
-test('page Blog has no 404', async ({ page }) => {
+test('№5 Page Blog has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/blog');
   await expect(response).toBeOK();
 
 });
 
-test('Page Contact has no 404', async ({ page }) => {
+test('№7 Page Contact has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/contact');
   await expect(response).toBeOK();
 
 });
 
-test('Page Home has no 404', async ({ page }) => {
-  const response = await page.request.get('https://polis812.github.io/home');
+test('№12 Page Home has no 404', async ({ page }) => {
+  const response = await page.request.get('https://polis812.github.io/home_insurance');
   await expect(response).toBeOK();
 
 });
 
-test('Page Travel has no 404', async ({ page }) => {
+test('№10 Page Travel has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/travel');
   await expect(response).toBeOK();
 
 });
 
-test('Page Pet has no 404', async ({ page }) => {
+test('№11 Page Pet has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/pet');
   await expect(response).toBeOK();
 });
 
-test('Page Privacy has no 404', async ({ page }) => {
+test('№17 Page Privacy has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/privacy');
   await expect(response).toBeOK();
 });
 
-test('Page Cookies has no 404', async ({ page }) => {
+test('№14 Page Cookies has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/cookies');
   await expect(response).toBeOK();
 });
 
-test('Page Partners has no 404', async ({ page }) => {
+test('№16 Page Partners has no 404', async ({ page }) => {
   const response = await page.request.get('https://polis812.github.io/partners');
   await expect(response).toBeOK();
 });
 
-test('Wrong link Terms', async ({ page }) => {
+test('№18 Correct link Terms', async ({ page }) => {
   await page.goto('https://polis812.github.io/vacuu/')
 
   await page.locator('//*[@id="app"]/footer/div[2]/div[1]/a[1]').click();
@@ -83,7 +76,7 @@ test('Wrong link Terms', async ({ page }) => {
   await expect(currentUrl).toBe('https://polis812.github.io/vacuu/terms');
 });
 
-test('Wrong link Vakuu.com', async ({ page }) => {
+test('№2 Correct link Vakuu.com in footer', async ({ page }) => {
   // const response = await page.request.get('https://polis812.github.io/privacy');
   // await expect(response).toBeOK();
   await page.goto('https://polis812.github.io/vacuu/')
@@ -96,7 +89,7 @@ test('Wrong link Vakuu.com', async ({ page }) => {
   
 });
 
-test('Wrong link Vakuu.com on main page', async ({ page }) => {
+test('№2 Correct link Vakuu.com on main page', async ({ page }) => {
   // const response = await page.request.get('https://polis812.github.io/privacy');
   // await expect(response).toBeOK();
   await page.goto('https://polis812.github.io/vacuu/')
@@ -109,7 +102,7 @@ test('Wrong link Vakuu.com on main page', async ({ page }) => {
   
 });
 
-test('Empty mail isn`t correct', async ({ page }) => {
+test('№15 Empty mail - isn`t correct', async ({ page }) => {
   await page.goto('https://polis812.github.io/vacuu/');
  
   await page.locator('//*[@id="app"]/footer/div[1]/div[4]/div/div/input').fill('');
@@ -121,7 +114,11 @@ test('Empty mail isn`t correct', async ({ page }) => {
   
 });
 
-
+test('№19 Blog has an a link element', async ({ page }) => {
+  await page.goto('https://polis812.github.io/vacuu/');
+ 
+  await expect(page.locator('//*[@id="app"]/div[2]/div[1]/div[1]/a')).toHaveCount(7);
+});
 
 
 
